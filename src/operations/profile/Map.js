@@ -13,7 +13,7 @@ export const MapField = data => {
       {typeof data.location !== 'undefined' ? (
         <MapWithAMarker containerElement={<div style={{ height: `100px`, width: `500px` }} />} mapElement={<div style={{ height: `100%` }} />} />
       ) : (
-        <Typography>Adresse GPS Non spécifiée</Typography>
+        <Typography variant="gps__address">Adresse GPS Non spécifiée</Typography>
       )}
     </>
   )

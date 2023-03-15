@@ -1,11 +1,11 @@
 import { Student, EnableStatus, StudentSexEnum, Whoami, WhoamiRoleEnum, User, UserSexEnum } from 'src/gen/haClient'
 
-export const studentNameToBeCheckedMock: string = 'Ryan'
+export const studentNameToBeCheckedMock: string = 'herilala'
 export const student1MockWithLocation: Student = {
   id: 'student1_id',
   ref: 'STD21111',
-  first_name: 'Andria',
-  last_name: 'Ryan',
+  first_name: 'Ryan',
+  last_name: 'Andria',
   sex: StudentSexEnum.M,
   birth_date: '2000-01-01',
   address: 'Adr 1',
@@ -21,9 +21,9 @@ export const student1MockWithLocation: Student = {
 
 export const student1Mock: Student = {
   id: 'student1_id',
-  ref: 'STD21001',
+  ref: 'STD21111',
   first_name: studentNameToBeCheckedMock,
-  last_name: 'Andria',
+  last_name: 'Rafanomezantsoa',
   sex: StudentSexEnum.M,
   birth_date: '2000-01-01',
   address: 'Adr 1',
