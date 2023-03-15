@@ -1,8 +1,7 @@
 import { mount } from '@cypress/react'
 import App from '../App'
-import { student1 } from './credentials'
 import specTitle from 'cypress-sonarqube-reporter/specTitle'
-import { createPaymentMock, feesMock, student1Mock, student1MockWithLocation, studentNameToBeCheckedMock, whoamiStudentMock } from './mocks/responses'
+import { createPaymentMock, feesMock, student1Mock,  studentNameToBeCheckedMock, whoamiStudentMock } from './mocks/responses'
 
 describe(specTitle('Student'), () => {
   beforeEach(() => {
@@ -44,7 +43,7 @@ describe(specTitle('Student'), () => {
     cy.contains('En retard')
   })
 
-  it('handle a specific message if location isn`t defined', () => {
-    cy.contains('Adresse GPS non spécifiée')
+  it('handle a specific message if location isn`t defined',()=>{
+    cy.get([`data-test-id='not__specified'`]).contains('Adresse GPS non spécifiée')
   })
 })
