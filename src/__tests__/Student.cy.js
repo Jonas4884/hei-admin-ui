@@ -2,13 +2,13 @@ import { mount } from '@cypress/react'
 import App from '../App'
 import { student1 } from './credentials'
 import specTitle from 'cypress-sonarqube-reporter/specTitle'
-import { createPaymentMock, feesMock, student1Mock, studentNameToBeCheckedMock, whoamiStudentMock } from './mocks/responses'
+import { createPaymentMock, feesMock, student1Mock, student1MockWithLocation, studentNameToBeCheckedMock, whoamiStudentMock } from './mocks/responses'
 
 describe(specTitle('Student'), () => {
   beforeEach(() => {
     mount(<App />)
-    cy.get('#username').type(student1.username)
-    cy.get('#password').type(student1.password)
+    cy.get('#username').type('test+ryan@hei.school')
+    cy.get('#password').type(process.env.REACT_APP_TEST_STUDENT1_PASSWORD)
     cy.get('button').contains('Connexion').click()
     cy.intercept('GET', `/students/${student1Mock.id}/fees?page=1&page_size=500`, feesMock).as('getFees')
     cy.intercept('GET', `/students/${student1Mock.id}`, student1Mock).as('getStudent')
@@ -41,5 +41,10 @@ describe(specTitle('Student'), () => {
       .wait(['@getStudent', '@getWhoami'])
     cy.get(':nth-child(7) > :nth-child(5)').click()
     cy.contains('En retard')
+  })
+
+  it('handle a specific message if location isn`t defined', () => {
+    cy.get(`[href="#/profile"]`).click()
+    cy.contains('Adresse GPS Non spécifiée')
   })
 })
